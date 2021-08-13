@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MoviesListAssignment</string>
+    <string name="no_record_found">No record found.</string>
+    <string name="n_a">N/A</string>
 </resources>
