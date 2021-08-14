@@ -5,9 +5,17 @@ import android.content.Context.CONNECTIVITY_SERVICE
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-
+/*
+* Check network status
+* */
 object NetworkUtil {
 
+    /*
+    * isInternetAvailable return true if network is connected or return false
+    *
+    * @param context, Context for connectivity manager
+    * @return network status true / false
+    * */
     @Suppress("DEPRECATION")
     fun isInternetAvailable(context: Context): Boolean {
         var result = false

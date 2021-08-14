@@ -8,14 +8,25 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
+/**
+ * Factory for all ViewModels and Repository.
+ */
 object ViewModelModules {
 
+    /*
+    * Add all view model and Repository
+    * */
+    val viewModelsModule: Module = module {
+        /*
+        * @param first set Network Repository with the help KOIN dependency
+        * @param second set Application with the help KOIN dependency
+        * */
+        viewModel { MovieListViewModel(get(), androidApplication()) }
 
-
-    val viewModelsModule : Module = module {
-        viewModel { MovieListViewModel(get(),androidApplication()) }
+        /*
+        * @param REST Api Repository with the help KOIN dependency
+        * Initialize Network Repository
+        * */
         single<NetworkRepository> { NetworkImpl(get()) }
-
     }
-
 }

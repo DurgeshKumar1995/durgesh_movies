@@ -26,15 +26,14 @@ class MovieListViewModel(
     val status: LiveData<String>
         get() = _status
 
-
     private fun getMoviesListFromNetwork() {
         viewModelScope.launch {
             try {
                 val networkResponse = networkRepository.getMoviesListAsync().await()
                 Logger.debug(networkResponse.toString())
-                if (networkResponse.status == ConstantString.OK && networkResponse.results?.isNotEmpty() == true){
+                if (networkResponse.status == ConstantString.OK && networkResponse.results?.isNotEmpty() == true) {
                     networkResponse.results.run(_moviesList::postValue)
-                }else{
+                } else {
                     _status.postValue(getApplication<BaseApplication>().getString(R.string.no_record_found))
                 }
             } catch (e: Exception) {
@@ -45,6 +44,7 @@ class MovieListViewModel(
     }
 
     init {
+        // Set initial state
         getMoviesListFromNetwork()
     }
 }

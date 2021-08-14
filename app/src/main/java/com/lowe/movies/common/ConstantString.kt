@@ -1,12 +1,9 @@
 package com.lowe.movies.common
 
+/*
+* All constant string
+* */
 object ConstantString {
 
-
-    const val NA = "N/A"
     const val OK = "OK"
-
-
-
-
 }

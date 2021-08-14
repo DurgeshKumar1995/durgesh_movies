@@ -8,18 +8,25 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.context.startKoin
 
+
+/*
+* used to simplify the sample. Consider a Dependency Injection(KOIN) framework.
+*Setup for View models and network stuff
+* Also, sets up application context and Logger.
+*/
 class BaseApplication : Application() {
 
+    //App Entry point
     override fun onCreate() {
         super.onCreate()
 
+        //Koin start
         startKoin {
-            androidContext(this@BaseApplication)
-            logger(AndroidLogger())
-            modules(NetworkModule.networkModule)
-            modules(ViewModelModules.viewModelsModule)
+            androidContext(this@BaseApplication) // add app context
+            logger(AndroidLogger()) // Default Koin logger
+            modules(NetworkModule.networkModule) // add network module
+            modules(ViewModelModules.viewModelsModule) // add view models module
 
-            RxJavaPlugins.setErrorHandler {}
         }
     }
 }

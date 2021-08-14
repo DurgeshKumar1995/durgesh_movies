@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">MoviesListAssignment</string>
+    <!-- If empty list found -->
     <string name="no_record_found">No record found.</string>
+    <!-- If any text value not found then default value of text -->
     <string name="n_a">N/A</string>
+    <string name="movie_list">Movie List</string>
+    <string name="movie_details">Movie Details</string>
+    <!-- Share transition key -->
+    <string name="thumbnail_share">thumbnail_share</string>
 </resources>

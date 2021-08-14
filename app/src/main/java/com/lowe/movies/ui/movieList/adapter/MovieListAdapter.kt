@@ -1,6 +1,5 @@
 package com.lowe.movies.ui.movieList.adapter
 
-
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import com.lowe.movies.dataSource.Result
 import com.lowe.movies.databinding.MovieItemLayoutBinding
 import com.lowe.movies.listener.OnClickItem
 import com.lowe.movies.utils.Logger
-
 
 class MovieListAdapter(
     private val itemClickListener: OnClickItem<Result>
@@ -33,18 +31,14 @@ class MovieListAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = list[position]?:return
+        val item = list[position] ?: return
 
         holder.setData(item)
-
-
     }
-
 
     inner class MyViewHolder(private val binding: MovieItemLayoutBinding) : RecyclerView.ViewHolder(
         binding.root
     ) {
-
 
         @SuppressLint("SetTextI18n")
         fun setData(result: Result) {
@@ -54,13 +48,11 @@ class MovieListAdapter(
                     itemClickListener.onClick(result)
                 }
                 val na = itemView.context.getString(R.string.n_a)
-                movieName.text = result.display_title?:na
+                movieName.text = result.display_title ?: na
                 movieThumbnail.setImageUri(result.multimedia?.src)
             }
         }
-
     }
-
 
     fun setData(tempList: List<Result>?) {
         list.clear()
@@ -68,6 +60,4 @@ class MovieListAdapter(
         Logger.debug("::::::::::::::::::::::::::::::::::::::::${list.size}")
         notifyDataSetChanged()
     }
-
-
 }

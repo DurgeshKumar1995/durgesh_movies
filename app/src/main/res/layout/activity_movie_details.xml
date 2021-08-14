@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--Movie Detail screen ,after selection a movie form list then showing movie details of selected movie-->
+<!--Added Nested scroll for if more data in movie item then not show full detail in screen-->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:forceDarkAllowed="false"
+    android:fillViewport="true"
+    android:paddingBottom="@dimen/margin_5x2"
     tools:context=".ui.movieDetails.MovieDetailsActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero_dp"
+        android:src="@drawable/place_holder"
+        android:id="@+id/movieThumbnail"
+        android:transitionName="@string/thumbnail_share"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintDimensionRatio="H,3:2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@android:color/black"
+            android:id="@+id/publicationDate"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/movieThumbnail"
+            android:layout_marginStart="@dimen/margin_5x2"
+            android:layout_marginEnd="@dimen/margin_5x2"
+            android:layout_marginTop="@dimen/margin_5x2"
+            android:text="@string/n_a"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/headLine"
+            app:layout_constraintTop_toBottomOf="@id/publicationDate"
+            android:layout_marginStart="@dimen/margin_5x2"
+            android:layout_marginEnd="@dimen/margin_5x2"
+            android:layout_marginTop="@dimen/margin_5x2"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="@string/n_a"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/summaryShort"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/headLine"
+            android:layout_marginStart="@dimen/margin_5x2"
+            android:layout_marginEnd="@dimen/margin_5x2"
+            android:layout_marginTop="@dimen/margin_5x2"
+            android:text="@string/n_a"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linkURL"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:autoLink="web"
+            android:linksClickable="true"
+            app:layout_constraintTop_toBottomOf="@id/summaryShort"
+            android:layout_marginStart="@dimen/margin_5x2"
+            android:layout_marginEnd="@dimen/margin_5x2"
+            android:layout_marginTop="@dimen/margin_5x2"
+            android:text="@string/n_a"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

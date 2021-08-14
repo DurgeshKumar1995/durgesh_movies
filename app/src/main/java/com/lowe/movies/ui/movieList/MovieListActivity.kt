@@ -1,8 +1,8 @@
 package com.lowe.movies.ui.movieList
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lowe.movies.R
 import com.lowe.movies.base.BaseActivity
@@ -14,7 +14,7 @@ import com.lowe.movies.ui.movieList.adapter.MovieListAdapter
 import com.lowe.movies.utils.IntentKeyStrings
 import org.jetbrains.anko.toast
 
-class MovieListActivity : BaseActivity<MovieListViewModel>(MovieListViewModel::class),OnClickItem<Result> {
+class MovieListActivity : BaseActivity<MovieListViewModel>(MovieListViewModel::class), OnClickItem<Result> {
 
     private lateinit var binding: ActivityMovieListBinding
 
@@ -23,32 +23,44 @@ class MovieListActivity : BaseActivity<MovieListViewModel>(MovieListViewModel::c
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        binding.movieList.run {
+        binding.root.run {
             layoutManager = LinearLayoutManager(this@MovieListActivity)
             adapter = movieListAdapter
         }
 
         model.run {
 
-            status.observe(this@MovieListActivity,{
-                it?.run{
-                    toast(this)
+            status.observe(
+                this@MovieListActivity,
+                {
+                    it?.run {
+                        toast(this)
+                    }
                 }
-            })
-            moviesList.observe(this@MovieListActivity,{
-                toast("${it.size}")
-                movieListAdapter.setData(it)
-            })
-
+            )
+            moviesList.observe(
+                this@MovieListActivity,
+                {
+                    movieListAdapter.setData(it)
+                }
+            )
         }
     }
 
     override fun onClick(t: Result?) {
         t?.run {
-            val intent = Intent(this@MovieListActivity,MovieDetailsActivity::class.java)
-            intent.putExtra(IntentKeyStrings.shareMovieDataKey,this)
-            startActivity(intent)
+            val intent = Intent(context, MovieDetailsActivity::class.java)
+            intent.putExtra(IntentKeyStrings.shareMovieDataKey, this)
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                this@MovieListActivity,
+                binding.root,
+                getString(
+                    R.string.thumbnail_share
+                )
+            )
+            startActivity(intent, options.toBundle())
         }
     }
 }
