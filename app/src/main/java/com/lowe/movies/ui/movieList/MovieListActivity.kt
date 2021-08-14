@@ -13,23 +13,40 @@ import com.lowe.movies.ui.movieDetails.MovieDetailsActivity
 import com.lowe.movies.ui.movieList.adapter.MovieListAdapter
 import com.lowe.movies.utils.IntentKeyStrings
 import org.jetbrains.anko.toast
-
+/*
+* Entry activity
+* Set MovieListViewModel view model
+* OnClickItem<Result> implemented for connection adapter and activity
+* */
 class MovieListActivity : BaseActivity<MovieListViewModel>(MovieListViewModel::class), OnClickItem<Result> {
 
+    // Binding instance
     private lateinit var binding: ActivityMovieListBinding
 
+    // Movie list Adapter initialize
     private val movieListAdapter = MovieListAdapter(this)
 
+    /*
+    * activity entry point
+    * When activity start then firstly call this
+    * It's call once in activity life cycle
+    * Here initialize view and set data
+    * live data observer initialize
+    * */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // bind initialize
         binding = ActivityMovieListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // set layout manager and adapter in recyclerview
         binding.root.run {
             layoutManager = LinearLayoutManager(this@MovieListActivity)
             adapter = movieListAdapter
         }
 
+        // observe data from live data
         model.run {
 
             status.observe(
@@ -49,6 +66,13 @@ class MovieListActivity : BaseActivity<MovieListViewModel>(MovieListViewModel::c
         }
     }
 
+    /*
+    * listener UI notifier
+    * get data from list
+    * @param t is Result type data
+    * and start new Movie Detail activity
+    * with the help intent and also share movie data in intent
+    * */
     override fun onClick(t: Result?) {
         t?.run {
             val intent = Intent(context, MovieDetailsActivity::class.java)

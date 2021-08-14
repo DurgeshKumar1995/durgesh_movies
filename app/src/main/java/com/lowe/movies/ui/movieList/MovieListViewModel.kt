@@ -18,14 +18,22 @@ class MovieListViewModel(
     application: Application
 ) : AndroidBaseViewModel(application) {
 
+    // list data holder
     private val _moviesList = MutableLiveData<ArrayList<Result>>()
     val moviesList: LiveData<ArrayList<Result>>
         get() = _moviesList
 
+    // status update in UI
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
         get() = _status
 
+    /*
+    * network call with the help kotlin coroutine
+    * Use viewModelScope coroutine scope
+    * hit api check status list get or not otherwise set no data found
+    * and set the data in mutable live data
+    * */
     private fun getMoviesListFromNetwork() {
         viewModelScope.launch {
             try {
@@ -45,6 +53,9 @@ class MovieListViewModel(
 
     init {
         // Set initial state
+        /*
+        * Network call for movie list
+        * */
         getMoviesListFromNetwork()
     }
 }

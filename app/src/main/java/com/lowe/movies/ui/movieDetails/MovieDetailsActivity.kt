@@ -8,17 +8,27 @@ import com.lowe.movies.common.show
 import com.lowe.movies.dataSource.Result
 import com.lowe.movies.databinding.ActivityMovieDetailsBinding
 import com.lowe.movies.utils.IntentKeyStrings
-
+/*
+* Get share selected Movie form movie list screen
+* Set Movie Detail in UI
+* */
 class MovieDetailsActivity : AppCompatActivity() {
 
+    /*
+    * View Binding
+    * */
     private lateinit var binding: ActivityMovieDetailsBinding
 
+    /*
+    * set Data in UI
+    * set title and back button on screen
+    * */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val NA = getString(R.string.n_a)
+        val notApplicable = getString(R.string.n_a)
         supportActionBar?.run {
             setDisplayHomeAsUpEnabled(true)
             setHomeButtonEnabled(true)
@@ -33,9 +43,9 @@ class MovieDetailsActivity : AppCompatActivity() {
                         it.title = display_title
                     }
                     binding.movieThumbnail.setImageUri(multimedia?.src, 0f)
-                    binding.publicationDate.text = publication_date ?: NA
-                    binding.headLine.text = headline ?: NA
-                    binding.summaryShort.text = summary_short ?: NA
+                    binding.publicationDate.text = publication_date ?: notApplicable
+                    binding.headLine.text = headline ?: notApplicable
+                    binding.summaryShort.text = summary_short ?: notApplicable
                     link?.url?.let {
                         binding.linkURL.let { a ->
                             a.show()
@@ -47,6 +57,9 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    * Back button override method
+    * */
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
