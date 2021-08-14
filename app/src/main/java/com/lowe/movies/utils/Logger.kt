@@ -32,5 +32,4 @@ object Logger {
             Log.d(tag, msg?.localizedMessage.toString())
         }
     }
-
 }

@@ -13,7 +13,7 @@ import kotlinx.coroutines.cancel
 * */
 abstract class AndroidBaseViewModel(application: Application) : AndroidViewModel(application) {
 
-    //Custom coroutine scope
+    // Custom coroutine scope
     private val scope = CoroutineScope(
         Job() + Dispatchers.Main
     )

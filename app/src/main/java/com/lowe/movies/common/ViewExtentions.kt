@@ -22,7 +22,6 @@ fun View.show() {
     visibility = View.VISIBLE
 }
 
-
 /*
 * Set image from network with url
 * @param url is @Nullable type value ,this param share network image url
@@ -31,7 +30,7 @@ fun View.show() {
 fun ImageView.setImageUri(url: String?, radius: Float = 8f) {
     load(url) {
         crossfade(true) // add crossfade in image
-        placeholder(R.drawable.place_holder)  // Add place holder on image
+        placeholder(R.drawable.place_holder) // Add place holder on image
         error(R.drawable.place_holder) // If url not valid then show
         transformations(RoundedCornersTransformation(radius)) // add radius in image
     }

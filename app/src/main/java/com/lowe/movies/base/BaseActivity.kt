@@ -14,9 +14,9 @@ import kotlin.reflect.KClass
 * */
 abstract class BaseActivity<T : ViewModel>(clazz: KClass<T>) : AppCompatActivity() {
 
-    //return View model instance
+    // return View model instance
     val model: T by viewModel(clazz)
 
-    //return Activity Context instance
+    // return Activity Context instance
     val context: Context by lazy { this }
 }
