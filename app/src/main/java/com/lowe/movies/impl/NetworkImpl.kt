@@ -3,7 +3,6 @@ package com.lowe.movies.impl
 import com.lowe.movies.dataSource.BaseModel
 import com.lowe.movies.network.RESTApi
 import com.lowe.movies.repository.NetworkRepository
-import kotlinx.coroutines.Deferred
 
 /*
 * Network call impl of Network repository

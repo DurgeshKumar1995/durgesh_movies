@@ -2,7 +2,6 @@ package com.lowe.movies.network
 
 import com.lowe.movies.BuildConfig
 import com.lowe.movies.dataSource.BaseModel
-import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 /*

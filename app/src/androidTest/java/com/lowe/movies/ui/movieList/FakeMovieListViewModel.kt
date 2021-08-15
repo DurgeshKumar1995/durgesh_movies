@@ -10,7 +10,6 @@ import com.lowe.movies.base.BaseApplication
 import com.lowe.movies.common.ConstantString
 import com.lowe.movies.dataSource.Result
 import com.lowe.movies.repository.FakeNetworkRepository
-import com.lowe.movies.repository.NetworkRepository
 import com.lowe.movies.utils.Logger
 import kotlinx.coroutines.launch
 

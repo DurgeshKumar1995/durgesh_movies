@@ -2,6 +2,6 @@ package com.lowe.movies.repository
 
 import com.lowe.movies.dataSource.BaseModel
 
-interface FakeNetworkRepository{
+interface FakeNetworkRepository {
     suspend fun getMoviesListAsync(): BaseModel
 }
