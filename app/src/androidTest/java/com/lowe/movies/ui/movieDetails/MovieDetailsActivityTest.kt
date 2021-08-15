@@ -99,4 +99,3 @@ class MovieDetailsActivityTest {
         onView(withContentDescription("Navigate up")).perform(click())
     }
 }
-
