@@ -9,17 +9,18 @@ import com.lowe.movies.base.AndroidBaseViewModel
 import com.lowe.movies.base.BaseApplication
 import com.lowe.movies.common.ConstantString
 import com.lowe.movies.dataSource.Result
+import com.lowe.movies.repository.FakeNetworkRepository
 import com.lowe.movies.repository.NetworkRepository
 import com.lowe.movies.utils.Logger
 import kotlinx.coroutines.launch
 
-class MovieListViewModel(
-    private val networkRepository: NetworkRepository,
+class FakeMovieListViewModel(
+    private val fakeNetworkRepository: FakeNetworkRepository,
     application: Application
 ) : AndroidBaseViewModel(application) {
 
     // list data holder
-    val _moviesList = MutableLiveData<ArrayList<Result>>()
+    private val _moviesList = MutableLiveData<ArrayList<Result>>()
     val moviesList: LiveData<ArrayList<Result>>
         get() = _moviesList
 
@@ -37,10 +38,10 @@ class MovieListViewModel(
     fun getMoviesListFromNetwork() {
         viewModelScope.launch {
             try {
-                val networkResponse = networkRepository.getMoviesListAsync()
+                val networkResponse = fakeNetworkRepository.getMoviesListAsync()
                 Logger.debug(networkResponse.toString())
                 if (networkResponse.status == ConstantString.OK && networkResponse.results?.isNotEmpty() == true) {
-                    networkResponse.results.run(_moviesList::postValue)
+                    networkResponse.results.run(_moviesList::setValue)
                 } else {
                     _status.postValue(getApplication<BaseApplication>().getString(R.string.no_record_found))
                 }

@@ -16,5 +16,5 @@ class NetworkImpl(private val restApi: RESTApi) : NetworkRepository {
     * NetworkRepository implemented function
      * @return network response with Deferred
      */
-    override fun getMoviesListAsync(): Deferred<BaseModel> = restApi.getMoviesListAsync()
+    override suspend fun getMoviesListAsync(): BaseModel = restApi.getMoviesListAsync()
 }

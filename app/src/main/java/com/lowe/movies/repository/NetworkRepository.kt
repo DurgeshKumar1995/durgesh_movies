@@ -9,5 +9,5 @@ import kotlinx.coroutines.Deferred
 interface NetworkRepository {
 
     // return  network data response with Deferred
-    fun getMoviesListAsync(): Deferred<BaseModel>
+    suspend fun getMoviesListAsync(): BaseModel
 }

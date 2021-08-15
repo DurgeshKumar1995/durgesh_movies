@@ -19,5 +19,5 @@ interface RESTApi {
     * @return Deferred data response
     * */
     @GET("reviews/search.json")
-    fun getMoviesListAsync(@Query("api-key") key: String = BuildConfig.API_KEY): Deferred<BaseModel>
+    suspend fun getMoviesListAsync(@Query("api-key") key: String = BuildConfig.API_KEY): BaseModel
 }
