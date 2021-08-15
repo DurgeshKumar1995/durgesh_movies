@@ -65,7 +65,7 @@ class MovieDetailsActivityTest {
             IntentKeyStrings.shareMovieDataKey,
             movieModel
         ) // obviously use a const for key
-        activityScenario = ActivityScenario.launch<MovieDetailsActivity>(intent)
+        activityScenario = ActivityScenario.launch(intent)
     }
 
     @After
@@ -100,4 +100,3 @@ class MovieDetailsActivityTest {
     }
 }
 
-const val TAG = "MovieDetailsActivityTest"

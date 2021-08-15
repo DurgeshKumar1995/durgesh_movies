@@ -17,7 +17,7 @@ import org.koin.core.inject
 @LargeTest
 class MovieListViewModelTest : KoinComponent {
 
-    val movieListViewModel: MovieListViewModel by inject()
+    private val movieListViewModel: MovieListViewModel by inject()
 
     @After
     fun tearDown() {
